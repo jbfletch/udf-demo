@@ -5,7 +5,6 @@ import com.google.common.collect.Range;
 import com.google.common.collect.RangeMap;
 import io.confluent.ksql.function.udf.Udf;
 import io.confluent.ksql.function.udf.UdfDescription;
-
 import java.util.Optional;
 
 @UdfDescription(name = "recodebmi", description = "takes continuous BMI readings and translates to WHO categories")
