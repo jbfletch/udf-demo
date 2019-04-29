@@ -22,14 +22,14 @@ public class RecodeBmi {
             .put(Range.atLeast(40.0),"Obese_Class_3")
             .build();
 
-    @Udf(description = "returns who category for a given Double BMI reading or NO_BMI_PROVIDED when null")
+    @Udf(description = "returns WHO category for a given Double BMI reading or NO_BMI_PROVIDED when null")
     public String recodeBmi(final Double v1) {
         // Code all nulls to a predefined number signifying a data intake error
         double v2 = Optional.ofNullable(v1).orElse(-1.0);
         return bmiRangeMap.get(v2);
     }
 
-    @Udf(description = "returns who category for a given Double BMI reading, does not allow nulls")
+    @Udf(description = "returns WHO category for a given double BMI reading, does not allow nulls")
     public String recodeBmi(final double v1) {
         return bmiRangeMap.get(v1);
     }
