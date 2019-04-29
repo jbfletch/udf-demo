@@ -34,11 +34,5 @@ public class RecodeBmi {
         return bmiRangeMap.get(v1);
     }
 
-//   Testing null logic
-//    public static void main(String[] args) {
-//        System.out.println(recodeBmi(null));
-//        System.out.println(recodeBmi(20.0));
-//    }
-
 }
 
