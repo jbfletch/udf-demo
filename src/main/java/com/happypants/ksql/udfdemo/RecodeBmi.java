@@ -12,7 +12,7 @@ import java.util.Optional;
 public class RecodeBmi {
 
     // Create a ImmutableRangeMap to hold the WHO Classification mappings
-    static RangeMap<Double, String> bmiRangeMap
+    RangeMap<Double, String> bmiRangeMap
         = new ImmutableRangeMap.Builder<Double,String>()
             .put(Range.singleton(-1.0),"NO_BMI_PROVIDED")
             .put(Range.closedOpen(0.0,18.5),"Underweight")
@@ -24,14 +24,14 @@ public class RecodeBmi {
             .build();
 
     @Udf(description = "returns who category for a given Double BMI reading or NO_BMI_PROVIDED when null")
-    public static String recodeBmi(final Double v1) {
+    public String recodeBmi(final Double v1) {
         // Code all nulls to a predefined number signifying a data intake error
         double v2 = Optional.ofNullable(v1).orElse(-1.0);
         return bmiRangeMap.get(v2);
     }
 
     @Udf(description = "returns who category for a given Double BMI reading, does not allow nulls")
-    public static String recodeBmi(final double v1) {
+    public String recodeBmi(final double v1) {
         return bmiRangeMap.get(v1);
     }
 
